@@ -42,8 +42,8 @@ public class StackImpl implements Stack{
     public void clear() {
         for (int i=0; i< lengthMass; i ++){
                 objects[i]=null;
-                checker=0;
         }
+        checker=0;
     }
 
     @Override
