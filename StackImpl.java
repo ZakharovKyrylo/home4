@@ -3,43 +3,52 @@ package home04;
 import java.util.Objects;
 
 public class StackImpl implements Stack{
+    int lengthMass;
+    static int checker=0;
+    Object[] objects;// = new Object[5];
+    StackImpl(int num){
+        lengthMass = num;
+        objects = new Object[lengthMass];
+    }
 
-    Object[] objects = new Object[5];
 
     @Override
     public void push(Object o) throws StackException {
-        for (int i=0; i< objects.length; i ++){
+        for (int i=0; i< lengthMass; i ++){
             if(objects[i] == null){
                 objects[i] =  o;
+                ++checker;
                 break;
             }
-            else if ((i== objects.length-1)&(objects[i]!=null)) throw new StackException(1);
+            else if (checker>=lengthMass) throw new StackException();
         }
     }
 
     @Override
     public Object pop() throws StackException {
-        for (int i=0; i< objects.length; i ++){
+        for (int i=0; i< lengthMass; i ++){
             if(objects[i] != null){
                 Object o = objects[i];
                 objects[i]=null;
+                --checker;
                 return o;
             }
-            else if((i== objects.length-1)&(objects[i] == null)) throw new StackException(2);
+            else if(checker<1) throw new StackException();
         }
         return null;
     }
 
     @Override
     public void clear() {
-        for (int i=0; i< objects.length; i ++){
+        for (int i=0; i< lengthMass; i ++){
                 objects[i]=null;
+                checker=0;
         }
     }
 
     @Override
     public void print() {
-        for (int i=0; i< objects.length; i ++){
+        for (int i=0; i< lengthMass; i ++){
             System.out.println(objects[i]);
         }
     }
@@ -48,10 +57,8 @@ public class StackImpl implements Stack{
 
 
 class StackException extends Exception {
-    public StackException(int i){
-        switch (i){
-            case 1 : System.out.println("Stack is full "); break;
-            case 2 : System.out.println("Stack is empty "); break;
-        }
+    public StackException(){
+        if(StackImpl.checker < 1) System.out.println("Stack is empty ");
+        else  System.out.println("Stack is full ");
     }
 }
