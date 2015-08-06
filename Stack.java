@@ -1,4 +1,4 @@
-package home04;
+package org.sourceit.zakharov.home04;
 
 public interface Stack {
     // adds an element to stack, throws exception if stack is full ("Stack is

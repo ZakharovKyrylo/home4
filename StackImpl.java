@@ -1,6 +1,4 @@
-package home04;
-
-import java.util.Objects;
+package org.sourceit.zakharov.home04;
 
 public class StackImpl implements Stack{
     int lengthMass;
