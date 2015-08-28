@@ -2,7 +2,7 @@ package org.sourceit.zakharov.home04;
 
 public class StackImpl implements Stack{
     int lengthMass;
-    static int checker=0;
+    int checker=0;
     Object[] objects;// = new Object[5];
     StackImpl(int num){
         lengthMass = num;
@@ -18,7 +18,7 @@ public class StackImpl implements Stack{
                 ++checker;
                 break;
             }
-            else if (checker>=lengthMass) throw new StackException();
+            else if (checker>=lengthMass) throw new StackException(checker);
         }
     }
 
@@ -31,7 +31,7 @@ public class StackImpl implements Stack{
                 --checker;
                 return o;
             }
-            else if(checker<1) throw new StackException();
+            else if(checker<1) throw new StackException(checker);
         }
         return null;
     }
@@ -55,8 +55,8 @@ public class StackImpl implements Stack{
 
 
 class StackException extends Exception {
-    public StackException(){
-        if(StackImpl.checker < 1) System.out.println("Stack is empty ");
+    public StackException(int checker){
+        if(checker < 1) System.out.println("Stack is empty ");
         else  System.out.println("Stack is full ");
     }
 }
