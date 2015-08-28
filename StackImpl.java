@@ -3,7 +3,7 @@ package org.sourceit.zakharov.home04;
 public class StackImpl implements Stack{
     int lengthMass;
     int checker=0;
-    Object[] objects;// = new Object[5];
+    Object[] objects;// = new Object[5]
     StackImpl(int num){
         lengthMass = num;
         objects = new Object[lengthMass];
